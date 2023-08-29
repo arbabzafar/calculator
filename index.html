@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>calculator</title>
+</head>
+
+<body>
+    <div class="bg">
+    <div class="calculator">
+        <div class="inputs">
+            <input type="number" class="form-inputs text_no1" id="text_no1" placeholder="Enter number 1">
+            <input type="text" class="form-inputs text_op" id="text_op" placeholder="Operater">
+            <input type="number" class="form-inputs text_no2" id="text_no2" placeholder="Enter number 2">
+            <input type="text" class="form-inputs text_res" id="text_res" placeholder="Result">
+        </div>
+        <div class="btns">
+            <div class="btn" onclick="getNum(9);">9</div>
+            <div class="btn" onclick="getNum(8);">8</div>
+            <div class="btn" onclick="getNum(7);">7</div>
+            <div class="btn" onclick="opert('+');">+</div>
+            <div class="btn" onclick="getNum(6);">6</div>
+            <div class="btn" onclick="getNum(5);">5</div>
+            <div class="btn" onclick="getNum(4);">4</div>
+            <div class="btn" onclick="opert('-');">-</div>
+            <div class="btn" onclick="getNum(3);">3</div>
+            <div class="btn" onclick="getNum(2);">2</div>
+            <div class="btn" onclick="getNum(1);">1</div>
+            <div class="btn" onclick="opert('*');">*</div>
+            <div class="btn" onclick="getNum(0);">0</div>
+            <div class="btn" onclick="clr('c');">c</div>
+            <div class="btn" onclick="calculate('=');">=</div>
+            <div class="btn" onclick="opert('/');">/</div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+
+    <script>
+        function getNum(num) {
+            var op = document.getElementById('text_op').value;
+            if (op == '') {
+                var box1 = document.getElementById('text_no1');
+                box1.value += num;
+
+            }
+            else {
+                var box2 = document.getElementById('text_no2');
+                box2.value += num;
+
+            }
+
+        }
+        function opert(op) {
+            var no1 = document.getElementById('text_no1').value;
+            if (no1 == '') {
+                alert("Plz first number")
+            }
+            else {
+                var box_op = document.getElementById('text_op');
+                box_op.value = op;
+            }
+
+        }
+        function calculate() {
+            var res_box = document.getElementById('text_res');
+            var res = 0;
+            var no1 = document.getElementById('text_no1').value;
+            var op = document.getElementById('text_op').value;
+            var no2 = document.getElementById('text_no2').value;
+            if (no1!== "" || no2!== '' || op!== '') {
+                if (op == '+') {
+                    res = no1 * 1 + no2 * 1;
+
+                }
+                else if (op == '-') {
+                    res = no1 - no2;
+
+
+                }
+                else if (op == '*') {
+                    res = no1 * no2;
+
+
+                }
+                else if (op == '/') {
+                    if(no2==0){
+                        res="syantax Error";
+                    }
+                    else{
+                    res = no1 / no2;
+                    }
+
+                }
+                else {
+                    res = "Error";
+                }
+                res_box.value = res;
+                res_box.style.background = "green";
+                res_box.style.color = "white";
+            }
+            else {
+                alert('Plz Fill All fields');
+            }
+
+
+        }
+        function clr() {
+            document.getElementById('text_no1').value = "";
+            document.getElementById('text_op').value = "";
+            document.getElementById('text_no2').value = "";
+            document.getElementById('text_res').value = "";
+                text_res.style.background = "transparent";
+        }
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
